@@ -1,4 +1,5 @@
 local currentcode = _G.Code 
+local openingcase = _G.AutoOpen
 local args = {
     [1] = currentcode, -- код
 }
@@ -153,3 +154,11 @@ local args = {
     [2] = 31,
 }
 game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
