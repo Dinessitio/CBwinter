@@ -162,7 +162,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.1)
+wait(0.2)
 local args = {
     [1] = {
         [1] = "BuyCase",
@@ -187,7 +187,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.1)
+wait(0.2)
 local args = {
     [1] = {
         [1] = "BuyCase",
@@ -204,7 +204,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.1)
+wait(0.2)
 local args = {
     [1] = {
         [1] = "BuyCase",
@@ -221,7 +221,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.1)
+wait(0.2)
 local args = {
     [1] = {
         [1] = "BuyCase",
@@ -238,7 +238,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.1)
+wait(0.2)
 local args = {
     [1] = {
         [1] = "BuyCase",
@@ -255,7 +255,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.1)
+wait(0.2)
 local args = {
     [1] = {
         [1] = "BuyCase",
