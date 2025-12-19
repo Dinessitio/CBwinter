@@ -162,3 +162,107 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
+local args = {
+    [1] = {
+        [1] = "BuyCase",
+        [2] = openingcase,
+    },
+}
+
+game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
