@@ -81,10 +81,10 @@ end
 
 -- Вызов BuyCase (10 раз с задержкой)
 local buyCaseArgs = {{"BuyCase", openingcase}}
-for i = 1, 10 do
+for i = 1, 100 do
     safeFireServer("DataEvent", buyCaseArgs)
     if i % 2 == 0 then  -- задержка каждые 2 вызова
-        task.wait(0.3)
+        task.wait(0.01)
     end
 end
 
