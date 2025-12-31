@@ -1,673 +1,94 @@
+-- Сервисы
 local Players = game:GetService("Players")
-local CoreGui = game:GetService("CoreGui")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Создание GUI
 local ScreenGui = Instance.new("ScreenGui")
-local abc = Instance.new("Frame")
+local MainFrame = Instance.new("Frame")
+
 ScreenGui.ResetOnSpawn = false
 ScreenGui.DisplayOrder = 999999999
 ScreenGui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-abc.Name = "main"
-abc.Parent = ScreenGui
-abc.BackgroundColor3 = Color3.new(0, 0, 0)
-abc.BorderSizePixel = 0
-abc.Position = UDim2.new(-1, 100, -1, 100)
-abc.Size = UDim2.new(2, 0, 2, 0)
-local titleLabel = Instance.new("TextLabel")
-titleLabel.Parent = abc
-titleLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-titleLabel.BackgroundTransparency = 1
-titleLabel.BorderSizePixel = 0
-titleLabel.Position = UDim2.new(0.47, 0, 0.15, 0)
-titleLabel.Size = UDim2.new(0.5, 0, 1, 0)
-titleLabel.Font = Enum.Font.SourceSansBold
-titleLabel.Text = "Открываем ящики"
-titleLabel.TextColor3 = Color3.new(1, 1, 1)
-titleLabel.TextSize = 50
-local HolidayAllowed = _G.HolidayCase
-if RandomCase == true then
-if HolidayAllowed == false then
-local cases = {
-    [1] = "Voltage Case",
-    [2] = "Hiato Case",
-    [3] = "Kitter Case",
-    [4] = "Remastered Case",
-    [5] = "SCR Case",
-    [6] = "Vortax Case",
-    [7] = "Spectral Case"
-}
 
-local Mathematic = math.random(1, 7)
-local openingcase = cases[Mathematic]
+MainFrame.Name = "main"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(-1, 100, -1, 100)
+MainFrame.Size = UDim2.new(2, 0, 2, 0)
 
-print(HolidayAllowed)
-print(Mathematic)
-print(openingcase)
-end
-if HolidayAllowed == true then
-local cases = {
-    [1] = "Voltage Case",
-    [2] = "Hiato Case",
-    [3] = "Kitter Case",
-    [4] = "Remastered Case",
-    [5] = "SCR Case",
-    [6] = "Vortax Case",
-    [7] = "Spectral Case",
-    [8] = "Holidays Case"
-}
+-- Заголовок
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Parent = MainFrame
+TitleLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TitleLabel.BackgroundTransparency = 1
+TitleLabel.BorderSizePixel = 0
+TitleLabel.Position = UDim2.new(0.47, 0, 0.15, 0)
+TitleLabel.Size = UDim2.new(0.5, 0, 1, 0)
+TitleLabel.Font = Enum.Font.SourceSansBold
+TitleLabel.Text = "Getting gold rarity item!"
+TitleLabel.TextColor3 = Color3.new(1, 1, 1)
+TitleLabel.TextSize = 50
 
-local Mathematic = math.random(1, 8)
-local openingcase = cases[Mathematic]
+-- Выбор кейса
+local openingcase
+local RandomCase = _G.RandomCase
+local HolidayAllowed = _G.HolidayAllowed
 
-print(HolidayAllowed)
-print(Mathematic)
-print(openingcase)
-end
-end
-if RandomCase == false then
+if RandomCase then
+    local cases = {
+        "Voltage Case",
+        "Hiato Case",
+        "Kitter Case",
+        "Remastered Case",
+        "SCR Case",
+        "Vortax Case",
+        "Spectral Case"
+    }
+    
+    if HolidayAllowed then
+        table.insert(cases, "Holidays Case")
+    end
+    
+    local Mathematic = math.random(1, #cases)
+    openingcase = cases[Mathematic]
+    
+    print("HolidayAllowed:", HolidayAllowed)
+    print("Selected index:", Mathematic)
+    print("Opening case:", openingcase)
+else
     openingcase = _G.CaseToOpen
-    print(openingcase)
+    print("Fixed case:", openingcase)
 end
 
+-- Функция для безопасного вызова событий
+local function safeFireServer(eventName, args)
+    local event = ReplicatedStorage:FindFirstChild("Events"):FindFirstChild(eventName)
+    if event then
+        event:FireServer(unpack(args))
+    else
+        warn("Event not found:", eventName)
+    end
+end
 
--- script
-local args = {
-    [1] = "Claim",
-    [2] = 1,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 2,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 3,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 4,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 5,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 6,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 7,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 8,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 9,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 10,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 11,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 12,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 13,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 14,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 15,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 16,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 17,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 18,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 19,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 20,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 21,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 22,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 23,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 24,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 25,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 26,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 27,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 29,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 30,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = "Claim",
-    [2] = 31,
-}
-game:GetService("ReplicatedStorage").Events.AdventCalendar:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
+-- Вызов AdventCalendar (1–31)
+for i = 1, 31 do
+    local args = {"Claim", i}
+    safeFireServer("AdventCalendar", args)
+    task.wait(0.1)  -- небольшая задержка между вызовами
+end
 
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
+-- Вызов BuyCase (10 раз с задержкой)
+local buyCaseArgs = {{"BuyCase", openingcase}}
+for i = 1, 10 do
+    safeFireServer("DataEvent", buyCaseArgs)
+    if i % 2 == 0 then  -- задержка каждые 2 вызова
+        task.wait(0.3)
+    end
+end
 
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(0.2)
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-local args = {
-    [1] = {
-        [1] = "BuyCase",
-        [2] = openingcase,
-    },
-}
-
-game:GetService("ReplicatedStorage").Events.DataEvent:FireServer(unpack(args))
-wait(3)
-ScreenGui:Destroy()
-abc:Destroy()
+-- Очистка GUI
+task.delay(3, function()
+    ScreenGui:Destroy()
+end)
